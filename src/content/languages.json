@@ -1,0 +1,8 @@
+[
+  {"id":"python","name":"Python","slug":"python","fileExtension":".py","version":"3.12","color":"#3776AB","description":"ภาษาอ่านง่าย เหมาะกับ backend, data, automation และ AI"},
+  {"id":"javascript","name":"JavaScript","slug":"javascript","fileExtension":".js","version":"ES2024","color":"#F7DF1E","description":"ภาษาหลักของเว็บ ใช้ได้ทั้ง frontend และ backend"},
+  {"id":"typescript","name":"TypeScript","slug":"typescript","fileExtension":".ts","version":"5.x","color":"#3178C6","description":"JavaScript ที่เพิ่ม static types เพื่อช่วยลด bug ในโปรเจกต์ใหญ่"},
+  {"id":"go","name":"Go","slug":"go","fileExtension":".go","version":"1.22+","color":"#00ADD8","description":"ภาษา compiled ที่เรียบง่าย เหมาะกับ backend, CLI และระบบ concurrent"},
+  {"id":"rust","name":"Rust","slug":"rust","fileExtension":".rs","version":"1.78+","color":"#CE422B","description":"ภาษา system programming ที่เน้น performance และ memory safety"},
+  {"id":"java","name":"Java","slug":"java","fileExtension":".java","version":"21","color":"#E76F00","description":"ภาษา OOP ยอดนิยมใน enterprise, backend และ Android ecosystem"}
+]

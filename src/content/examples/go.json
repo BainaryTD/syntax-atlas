@@ -1,0 +1,112 @@
+[
+  {
+    "id": "go-hello-world-basic",
+    "languageId": "go",
+    "topicId": "hello-world",
+    "code": "fmt.Println(\"Hello, World!\")",
+    "explanation": "พิมพ์ข้อความออกทาง console",
+    "notes": [
+      "ตัวอย่างเต็มต้อง import fmt และอยู่ใน package main"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-comment-basic",
+    "languageId": "go",
+    "topicId": "comment",
+    "code": "// นี่คือ comment\nfmt.Println(\"Hi\")",
+    "explanation": "ใช้ // สำหรับ comment หนึ่งบรรทัด",
+    "notes": [
+      "ใช้ /* ... */ สำหรับ block comment"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-variable-basic",
+    "languageId": "go",
+    "topicId": "variable",
+    "code": "name := \"Bainary\"\nage := 20",
+    "explanation": "ประกาศตัวแปรแบบสั้นด้วย :=",
+    "notes": [
+      "ใช้ได้ภายใน function เท่านั้น"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-if-else-basic",
+    "languageId": "go",
+    "topicId": "if-else",
+    "code": "age := 18\n\nif age >= 18 {\n    fmt.Println(\"adult\")\n} else {\n    fmt.Println(\"minor\")\n}",
+    "explanation": "ตรวจเงื่อนไขด้วย if และ else",
+    "notes": [
+      "Go ไม่ต้องใส่วงเล็บรอบเงื่อนไข"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-for-loop-basic",
+    "languageId": "go",
+    "topicId": "for-loop",
+    "code": "for i := 0; i < 5; i++ {\n    fmt.Println(i)\n}",
+    "explanation": "วนลูปค่า 0 ถึง 4",
+    "notes": [
+      "Go ใช้ for เป็น loop หลัก ไม่มี while keyword"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-while-loop-basic",
+    "languageId": "go",
+    "topicId": "while-loop",
+    "code": "i := 0\n\nfor i < 5 {\n    fmt.Println(i)\n    i++\n}",
+    "explanation": "เขียน while-style loop ด้วย for",
+    "notes": [
+      "Go ไม่มี while keyword"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-function-basic",
+    "languageId": "go",
+    "topicId": "function",
+    "code": "func add(a int, b int) int {\n    return a + b\n}\n\nfmt.Println(add(2, 3))",
+    "explanation": "สร้าง function พร้อม type ของ parameter และ return",
+    "notes": [
+      "ถ้า parameter type เหมือนกันเขียน a, b int ได้"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-array-list-basic",
+    "languageId": "go",
+    "topicId": "array-list",
+    "code": "numbers := []int{1, 2, 3}\nnumbers = append(numbers, 4)",
+    "explanation": "สร้าง slice และเพิ่มข้อมูล",
+    "notes": [
+      "slice ใช้บ่อยกว่า array แบบ fixed size"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-object-map-dict-basic",
+    "languageId": "go",
+    "topicId": "object-map-dict",
+    "code": "user := map[string]any{\"name\": \"Bainary\", \"age\": 20}\nfmt.Println(user[\"name\"])",
+    "explanation": "สร้าง map แบบ key-value",
+    "notes": [
+      "any ใช้เก็บค่าหลายชนิด แต่เสีย type safety บางส่วน"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-try-catch-basic",
+    "languageId": "go",
+    "topicId": "try-catch",
+    "code": "value, err := strconv.Atoi(\"abc\")\nif err != nil {\n    fmt.Println(\"invalid number\")\n}\n_ = value",
+    "explanation": "Go จัดการ error ด้วยค่าที่ return กลับมา",
+    "notes": [
+      "Go ไม่มี try/catch แบบภาษาอื่น"
+    ],
+    "version": "Go 1.22+"
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "id": "java-hello-world-basic",
+    "languageId": "java",
+    "topicId": "hello-world",
+    "code": "System.out.println(\"Hello, World!\");",
+    "explanation": "พิมพ์ข้อความออกทาง console",
+    "notes": [
+      "ตัวอย่างเต็มต้องอยู่ใน class และ method เช่น main"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-comment-basic",
+    "languageId": "java",
+    "topicId": "comment",
+    "code": "// นี่คือ comment\nSystem.out.println(\"Hi\");",
+    "explanation": "ใช้ // สำหรับ comment หนึ่งบรรทัด",
+    "notes": [
+      "ใช้ /* ... */ สำหรับ block comment"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-variable-basic",
+    "languageId": "java",
+    "topicId": "variable",
+    "code": "String name = \"Bainary\";\nint age = 20;",
+    "explanation": "ประกาศตัวแปรพร้อม type",
+    "notes": [
+      "Java เป็น statically typed language"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-if-else-basic",
+    "languageId": "java",
+    "topicId": "if-else",
+    "code": "int age = 18;\n\nif (age >= 18) {\n    System.out.println(\"adult\");\n} else {\n    System.out.println(\"minor\");\n}",
+    "explanation": "ตรวจเงื่อนไขด้วย if และ else",
+    "notes": [
+      "ใช้วงเล็บปีกกา {} กำหนด block"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-for-loop-basic",
+    "languageId": "java",
+    "topicId": "for-loop",
+    "code": "for (int i = 0; i < 5; i++) {\n    System.out.println(i);\n}",
+    "explanation": "วนลูปค่า 0 ถึง 4",
+    "notes": [
+      "รูปแบบคล้าย C/JavaScript"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-while-loop-basic",
+    "languageId": "java",
+    "topicId": "while-loop",
+    "code": "int i = 0;\n\nwhile (i < 5) {\n    System.out.println(i);\n    i++;\n}",
+    "explanation": "วนซ้ำตราบใดที่ i น้อยกว่า 5",
+    "notes": [
+      "อย่าลืมเพิ่มค่า i เพื่อไม่ให้ loop ไม่จบ"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-function-basic",
+    "languageId": "java",
+    "topicId": "function",
+    "code": "static int add(int a, int b) {\n    return a + b;\n}\n\nSystem.out.println(add(2, 3));",
+    "explanation": "สร้าง method แบบ static ที่คืนค่าผลบวก",
+    "notes": [
+      "ใน Java function จะอยู่ใน class ในรูปแบบ method"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-array-list-basic",
+    "languageId": "java",
+    "topicId": "array-list",
+    "code": "ArrayList<Integer> numbers = new ArrayList<>();\nnumbers.add(1);\nnumbers.add(2);\nnumbers.add(3);",
+    "explanation": "สร้าง ArrayList และเพิ่มข้อมูล",
+    "notes": [
+      "ต้อง import java.util.ArrayList ในตัวอย่างเต็ม"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-object-map-dict-basic",
+    "languageId": "java",
+    "topicId": "object-map-dict",
+    "code": "Map<String, Object> user = new HashMap<>();\nuser.put(\"name\", \"Bainary\");\nuser.put(\"age\", 20);",
+    "explanation": "สร้าง Map แบบ key-value",
+    "notes": [
+      "ต้อง import java.util.Map และ java.util.HashMap"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-try-catch-basic",
+    "languageId": "java",
+    "topicId": "try-catch",
+    "code": "try {\n    int value = Integer.parseInt(\"abc\");\n} catch (NumberFormatException error) {\n    System.out.println(\"invalid number\");\n}",
+    "explanation": "ดักจับ exception ด้วย try/catch",
+    "notes": [
+      "Java แยก checked และ unchecked exceptions"
+    ],
+    "version": "Java 21"
+  }
+]

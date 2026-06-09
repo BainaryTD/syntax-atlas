@@ -1,0 +1,112 @@
+[
+  {
+    "id": "javascript-hello-world-basic",
+    "languageId": "javascript",
+    "topicId": "hello-world",
+    "code": "console.log(\"Hello, World!\");",
+    "explanation": "พิมพ์ข้อความออกทาง console",
+    "notes": [
+      "console.log ใช้บ่อยในการ debug"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-comment-basic",
+    "languageId": "javascript",
+    "topicId": "comment",
+    "code": "// นี่คือ comment\nconsole.log(\"Hi\");",
+    "explanation": "ใช้ // สำหรับ comment หนึ่งบรรทัด",
+    "notes": [
+      "ใช้ /* ... */ สำหรับ block comment"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-variable-basic",
+    "languageId": "javascript",
+    "topicId": "variable",
+    "code": "const name = \"Bainary\";\nlet age = 20;",
+    "explanation": "ประกาศค่าคงที่ด้วย const และตัวแปรที่เปลี่ยนได้ด้วย let",
+    "notes": [
+      "หลีกเลี่ยง var ใน code สมัยใหม่"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-if-else-basic",
+    "languageId": "javascript",
+    "topicId": "if-else",
+    "code": "const age = 18;\n\nif (age >= 18) {\n  console.log(\"adult\");\n} else {\n  console.log(\"minor\");\n}",
+    "explanation": "ตรวจเงื่อนไขด้วย if และ else",
+    "notes": [
+      "JavaScript ใช้วงเล็บปีกกา {} กำหนด block"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-for-loop-basic",
+    "languageId": "javascript",
+    "topicId": "for-loop",
+    "code": "for (let i = 0; i < 5; i++) {\n  console.log(i);\n}",
+    "explanation": "วนลูปค่า 0 ถึง 4",
+    "notes": [
+      "i++ เพิ่มค่า i ทีละ 1"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-while-loop-basic",
+    "languageId": "javascript",
+    "topicId": "while-loop",
+    "code": "let i = 0;\n\nwhile (i < 5) {\n  console.log(i);\n  i++;\n}",
+    "explanation": "วนซ้ำตราบใดที่ i น้อยกว่า 5",
+    "notes": [
+      "อย่าลืมเพิ่มค่า i เพื่อไม่ให้ loop ไม่จบ"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-function-basic",
+    "languageId": "javascript",
+    "topicId": "function",
+    "code": "function add(a, b) {\n  return a + b;\n}\n\nconsole.log(add(2, 3));",
+    "explanation": "สร้าง function ชื่อ add แล้วคืนค่าผลบวก",
+    "notes": [
+      "ยังสามารถเขียนเป็น arrow function ได้ด้วย"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-array-list-basic",
+    "languageId": "javascript",
+    "topicId": "array-list",
+    "code": "const numbers = [1, 2, 3];\nnumbers.push(4);",
+    "explanation": "สร้าง array และเพิ่มข้อมูลท้าย array",
+    "notes": [
+      "array ใน JavaScript ขยายขนาดได้"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-object-map-dict-basic",
+    "languageId": "javascript",
+    "topicId": "object-map-dict",
+    "code": "const user = { name: \"Bainary\", age: 20 };\nconsole.log(user.name);",
+    "explanation": "สร้าง object แบบ key-value",
+    "notes": [
+      "object เหมาะกับ key ที่เป็น string/symbol"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-try-catch-basic",
+    "languageId": "javascript",
+    "topicId": "try-catch",
+    "code": "try {\n  JSON.parse(\"invalid\");\n} catch (error) {\n  console.log(\"invalid json\");\n}",
+    "explanation": "ดักจับ error ด้วย try/catch",
+    "notes": [
+      "catch จะรับ error object ที่เกิดขึ้น"
+    ],
+    "version": "ES2024"
+  }
+]

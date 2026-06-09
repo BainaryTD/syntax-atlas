@@ -1,0 +1,112 @@
+[
+  {
+    "id": "typescript-hello-world-basic",
+    "languageId": "typescript",
+    "topicId": "hello-world",
+    "code": "console.log(\"Hello, World!\");",
+    "explanation": "พิมพ์ข้อความออกทาง console",
+    "notes": [
+      "TypeScript ใช้ syntax พื้นฐานเหมือน JavaScript"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-comment-basic",
+    "languageId": "typescript",
+    "topicId": "comment",
+    "code": "// นี่คือ comment\nconsole.log(\"Hi\");",
+    "explanation": "ใช้ // สำหรับ comment หนึ่งบรรทัด",
+    "notes": [
+      "ใช้ /* ... */ สำหรับ block comment"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-variable-basic",
+    "languageId": "typescript",
+    "topicId": "variable",
+    "code": "const name: string = \"Bainary\";\nlet age: number = 20;",
+    "explanation": "ประกาศตัวแปรพร้อม type annotation",
+    "notes": [
+      "TypeScript infer type ได้ แต่ใส่ type เพื่อให้ตัวอย่างชัดเจน"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-if-else-basic",
+    "languageId": "typescript",
+    "topicId": "if-else",
+    "code": "const age: number = 18;\n\nif (age >= 18) {\n  console.log(\"adult\");\n} else {\n  console.log(\"minor\");\n}",
+    "explanation": "ตรวจเงื่อนไขด้วย if และ else",
+    "notes": [
+      "เงื่อนไขต้องให้ผลลัพธ์ที่ใช้เป็น boolean ได้"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-for-loop-basic",
+    "languageId": "typescript",
+    "topicId": "for-loop",
+    "code": "for (let i = 0; i < 5; i++) {\n  console.log(i);\n}",
+    "explanation": "วนลูปค่า 0 ถึง 4",
+    "notes": [
+      "เหมือน JavaScript แต่มี type checking ตอน compile"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-while-loop-basic",
+    "languageId": "typescript",
+    "topicId": "while-loop",
+    "code": "let i = 0;\n\nwhile (i < 5) {\n  console.log(i);\n  i++;\n}",
+    "explanation": "วนซ้ำตราบใดที่ i น้อยกว่า 5",
+    "notes": [
+      "TypeScript ตรวจ type ก่อนแปลงเป็น JavaScript"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-function-basic",
+    "languageId": "typescript",
+    "topicId": "function",
+    "code": "function add(a: number, b: number): number {\n  return a + b;\n}\n\nconsole.log(add(2, 3));",
+    "explanation": "สร้าง function พร้อม type ของ parameter และ return",
+    "notes": [
+      "ช่วยลดการส่งค่าผิด type"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-array-list-basic",
+    "languageId": "typescript",
+    "topicId": "array-list",
+    "code": "const numbers: number[] = [1, 2, 3];\nnumbers.push(4);",
+    "explanation": "สร้าง array ของ number และเพิ่มข้อมูล",
+    "notes": [
+      "number[] หมายถึง array ที่มีสมาชิกเป็น number"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-object-map-dict-basic",
+    "languageId": "typescript",
+    "topicId": "object-map-dict",
+    "code": "const user: { name: string; age: number } = { name: \"Bainary\", age: 20 };\nconsole.log(user.name);",
+    "explanation": "สร้าง object พร้อมกำหนด type shape",
+    "notes": [
+      "โปรเจกต์จริงมักแยก type/interface ออกมา"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-try-catch-basic",
+    "languageId": "typescript",
+    "topicId": "try-catch",
+    "code": "try {\n  JSON.parse(\"invalid\");\n} catch (error) {\n  console.log(\"invalid json\");\n}",
+    "explanation": "ดักจับ error ด้วย try/catch",
+    "notes": [
+      "error ใน catch มักมี type เป็น unknown ใน config ที่ strict"
+    ],
+    "version": "TypeScript 5.x"
+  }
+]

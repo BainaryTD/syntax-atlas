@@ -1,0 +1,112 @@
+[
+  {
+    "id": "rust-hello-world-basic",
+    "languageId": "rust",
+    "topicId": "hello-world",
+    "code": "println!(\"Hello, World!\");",
+    "explanation": "พิมพ์ข้อความออกทาง console",
+    "notes": [
+      "println! เป็น macro จึงมีเครื่องหมาย !"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-comment-basic",
+    "languageId": "rust",
+    "topicId": "comment",
+    "code": "// นี่คือ comment\nprintln!(\"Hi\");",
+    "explanation": "ใช้ // สำหรับ comment หนึ่งบรรทัด",
+    "notes": [
+      "ใช้ /* ... */ สำหรับ block comment"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-variable-basic",
+    "languageId": "rust",
+    "topicId": "variable",
+    "code": "let name = \"Bainary\";\nlet age = 20;",
+    "explanation": "ประกาศตัวแปรด้วย let",
+    "notes": [
+      "ตัวแปรใน Rust immutable โดย default"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-if-else-basic",
+    "languageId": "rust",
+    "topicId": "if-else",
+    "code": "let age = 18;\n\nif age >= 18 {\n    println!(\"adult\");\n} else {\n    println!(\"minor\");\n}",
+    "explanation": "ตรวจเงื่อนไขด้วย if และ else",
+    "notes": [
+      "เงื่อนไขต้องเป็น bool เท่านั้น"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-for-loop-basic",
+    "languageId": "rust",
+    "topicId": "for-loop",
+    "code": "for i in 0..5 {\n    println!(\"{}\", i);\n}",
+    "explanation": "วนลูปค่า 0 ถึง 4",
+    "notes": [
+      "range 0..5 ไม่รวม 5"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-while-loop-basic",
+    "languageId": "rust",
+    "topicId": "while-loop",
+    "code": "let mut i = 0;\n\nwhile i < 5 {\n    println!(\"{}\", i);\n    i += 1;\n}",
+    "explanation": "วนซ้ำตราบใดที่ i น้อยกว่า 5",
+    "notes": [
+      "ต้องใช้ mut ถ้าจะเปลี่ยนค่า i"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-function-basic",
+    "languageId": "rust",
+    "topicId": "function",
+    "code": "fn add(a: i32, b: i32) -> i32 {\n    a + b\n}\n\nprintln!(\"{}\", add(2, 3));",
+    "explanation": "สร้าง function พร้อม type และ return value",
+    "notes": [
+      "expression สุดท้ายไม่ต้องใส่ ; เพื่อ return ค่า"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-array-list-basic",
+    "languageId": "rust",
+    "topicId": "array-list",
+    "code": "let mut numbers = vec![1, 2, 3];\nnumbers.push(4);",
+    "explanation": "สร้าง vector และเพิ่มข้อมูล",
+    "notes": [
+      "Vec ขยายขนาดได้ ต่างจาก array ที่ขนาดคงที่"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-object-map-dict-basic",
+    "languageId": "rust",
+    "topicId": "object-map-dict",
+    "code": "use std::collections::HashMap;\n\nlet mut user = HashMap::new();\nuser.insert(\"name\", \"Bainary\");",
+    "explanation": "สร้าง HashMap แบบ key-value",
+    "notes": [
+      "HashMap ต้อง import จาก std::collections"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-try-catch-basic",
+    "languageId": "rust",
+    "topicId": "try-catch",
+    "code": "let value = \"abc\".parse::<i32>();\n\nmatch value {\n    Ok(number) => println!(\"{}\", number),\n    Err(_) => println!(\"invalid number\"),\n}",
+    "explanation": "จัดการ error ด้วย Result และ match",
+    "notes": [
+      "Rust ไม่มี try/catch แบบ exception ทั่วไป"
+    ],
+    "version": "Rust 1.78+"
+  }
+]

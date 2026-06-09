@@ -1,0 +1,12 @@
+[
+  {"id":"hello-world","slug":"hello-world","title":"Hello World","titleTh":"สวัสดีโลก","category":"Basics","description":"พิมพ์ข้อความง่าย ๆ ออกทาง console","tags":["hello","print","เริ่มต้น"]},
+  {"id":"comment","slug":"comment","title":"Comment","titleTh":"คอมเมนต์","category":"Basics","description":"เขียนข้อความอธิบาย code โดยไม่ถูก execute","tags":["comment","หมายเหตุ"]},
+  {"id":"variable","slug":"variable","title":"Variable","titleTh":"ตัวแปร","category":"Basics","description":"ประกาศตัวแปรเพื่อเก็บค่าไว้ใช้งานภายหลัง","tags":["variable","ตัวแปร","const","let"]},
+  {"id":"if-else","slug":"if-else","title":"If Else","titleTh":"เงื่อนไข If Else","category":"Control Flow","description":"เลือกทำงานตามเงื่อนไขที่เป็นจริงหรือเท็จ","tags":["if","else","condition","เงื่อนไข"]},
+  {"id":"for-loop","slug":"for-loop","title":"For Loop","titleTh":"การวนลูปแบบ For","category":"Control Flow","description":"วนซ้ำคำสั่งตามจำนวนรอบหรือข้อมูลใน collection","tags":["loop","for","วนลูป"]},
+  {"id":"while-loop","slug":"while-loop","title":"While Loop","titleTh":"การวนลูปแบบ While","category":"Control Flow","description":"วนซ้ำตราบใดที่เงื่อนไขยังเป็นจริง","tags":["while","loop","วนลูป"]},
+  {"id":"function","slug":"function","title":"Function","titleTh":"ฟังก์ชัน","category":"Functions","description":"สร้างชุดคำสั่งที่เรียกใช้ซ้ำได้","tags":["function","method","ฟังก์ชัน"]},
+  {"id":"array-list","slug":"array-list","title":"Array / List","titleTh":"อาร์เรย์ / ลิสต์","category":"Data Structures","description":"เก็บข้อมูลหลายค่าตามลำดับ","tags":["array","list","slice","vector"]},
+  {"id":"object-map-dict","slug":"object-map-dict","title":"Object / Map / Dict","titleTh":"อ็อบเจกต์ / แมป / ดิกชันนารี","category":"Data Structures","description":"เก็บข้อมูลแบบ key-value","tags":["object","map","dict","hashmap"]},
+  {"id":"try-catch","slug":"try-catch","title":"Try Catch / Error Handling","titleTh":"การจัดการข้อผิดพลาด","category":"Error Handling","description":"ดักจับและจัดการ error ที่เกิดขึ้นระหว่างโปรแกรมทำงาน","tags":["try","catch","error","exception"]}
+]

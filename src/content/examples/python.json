@@ -1,0 +1,112 @@
+[
+  {
+    "id": "python-hello-world-basic",
+    "languageId": "python",
+    "topicId": "hello-world",
+    "code": "print(\"Hello, World!\")",
+    "explanation": "พิมพ์ข้อความออกทาง console",
+    "notes": [
+      "print() เป็น function มาตรฐานสำหรับแสดงผล"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-comment-basic",
+    "languageId": "python",
+    "topicId": "comment",
+    "code": "# นี่คือ comment\nprint(\"Hi\")",
+    "explanation": "ใช้ # สำหรับ comment หนึ่งบรรทัด",
+    "notes": [
+      "Python ไม่มี block comment โดยตรง แต่มักใช้ docstring สำหรับคำอธิบายยาว ๆ"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-variable-basic",
+    "languageId": "python",
+    "topicId": "variable",
+    "code": "name = \"Bainary\"\nage = 20",
+    "explanation": "ประกาศตัวแปรด้วยการกำหนดค่าโดยตรง",
+    "notes": [
+      "Python ไม่ต้องระบุ type ตอนประกาศตัวแปร"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-if-else-basic",
+    "languageId": "python",
+    "topicId": "if-else",
+    "code": "age = 18\n\nif age >= 18:\n    print(\"adult\")\nelse:\n    print(\"minor\")",
+    "explanation": "ตรวจเงื่อนไขด้วย if และ else",
+    "notes": [
+      "Python ใช้ indentation เพื่อกำหนด block"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-for-loop-basic",
+    "languageId": "python",
+    "topicId": "for-loop",
+    "code": "for i in range(5):\n    print(i)",
+    "explanation": "วนลูปค่า 0 ถึง 4",
+    "notes": [
+      "range(5) ไม่รวมเลข 5"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-while-loop-basic",
+    "languageId": "python",
+    "topicId": "while-loop",
+    "code": "i = 0\n\nwhile i < 5:\n    print(i)\n    i += 1",
+    "explanation": "วนซ้ำตราบใดที่ i น้อยกว่า 5",
+    "notes": [
+      "อย่าลืมเปลี่ยนค่า i ไม่งั้นจะเกิด infinite loop"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-function-basic",
+    "languageId": "python",
+    "topicId": "function",
+    "code": "def add(a, b):\n    return a + b\n\nprint(add(2, 3))",
+    "explanation": "สร้าง function ชื่อ add แล้วคืนค่าผลบวก",
+    "notes": [
+      "ใช้ def เพื่อประกาศ function"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-array-list-basic",
+    "languageId": "python",
+    "topicId": "array-list",
+    "code": "numbers = [1, 2, 3]\nnumbers.append(4)",
+    "explanation": "สร้าง list และเพิ่มข้อมูลท้าย list",
+    "notes": [
+      "list ใน Python ขยายขนาดได้"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-object-map-dict-basic",
+    "languageId": "python",
+    "topicId": "object-map-dict",
+    "code": "user = {\"name\": \"Bainary\", \"age\": 20}\nprint(user[\"name\"])",
+    "explanation": "สร้าง dictionary แบบ key-value",
+    "notes": [
+      "key มักเป็น string แต่สามารถเป็น immutable type อื่นได้"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-try-catch-basic",
+    "languageId": "python",
+    "topicId": "try-catch",
+    "code": "try:\n    value = int(\"abc\")\nexcept ValueError:\n    print(\"invalid number\")",
+    "explanation": "ดักจับ error ด้วย try/except",
+    "notes": [
+      "Python ใช้ except แทน catch"
+    ],
+    "version": "Python 3.12"
+  }
+]

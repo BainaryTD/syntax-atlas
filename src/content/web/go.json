@@ -1,0 +1,94 @@
+[
+  {
+    "id": "net-http",
+    "languageId": "go",
+    "name": "net/http",
+    "slug": "net-http",
+    "category": "Standard library",
+    "version": "1.22+",
+    "url": "https://pkg.go.dev/net/http",
+    "tagline": "แพ็กเกจมาตรฐานของ Go ทำเว็บได้โดยไม่ต้องลง dependency",
+    "description": "net/http เป็นแพ็กเกจมาตรฐานที่ติดมากับ Go ใช้สร้าง HTTP server ได้เลยโดยไม่ต้องพึ่งไลบรารีภายนอก",
+    "code": "package main\n\nimport (\n\t\"fmt\"\n\t\"net/http\"\n)\n\nfunc main() {\n\thttp.HandleFunc(\"/\", func(w http.ResponseWriter, r *http.Request) {\n\t\tfmt.Fprint(w, \"Hello from net/http\")\n\t})\n\thttp.ListenAndServe(\":8080\", nil)\n}",
+    "structure": "myapp/\n├── go.mod\n├── main.go          # จุดเริ่มและ ListenAndServe\n└── handlers/        # แยก handler ตามกลุ่ม\n    └── home.go",
+    "explanation": "ลงทะเบียน handler ด้วย http.HandleFunc แล้วเปิด server ด้วย http.ListenAndServe โดย handler เขียน response ผ่าน ResponseWriter",
+    "notes": [
+      "ไม่ต้องติดตั้งอะไรเพิ่ม มากับ Go อยู่แล้ว",
+      "รัน: go run main.go"
+    ]
+  },
+  {
+    "id": "gin",
+    "languageId": "go",
+    "name": "Gin",
+    "slug": "gin",
+    "category": "Web framework",
+    "version": "1.10",
+    "url": "https://gin-gonic.com/",
+    "tagline": "เฟรมเวิร์ก Go ยอดนิยม เร็วและ API กระชับ",
+    "description": "Gin เป็นเฟรมเวิร์กที่เน้นความเร็ว มี routing, middleware และ helper สำหรับ JSON ที่เขียนสั้นกว่า net/http",
+    "code": "package main\n\nimport \"github.com/gin-gonic/gin\"\n\nfunc main() {\n\tr := gin.Default()\n\tr.GET(\"/\", func(c *gin.Context) {\n\t\tc.String(200, \"Hello from Gin\")\n\t})\n\tr.Run(\":8080\")\n}",
+    "structure": "myapp/\n├── go.mod\n├── main.go          # สร้าง router และ Run\n├── handlers/        # logic ตอบ request\n│   └── user.go\n└── middleware/      # auth, log ฯลฯ\n    └── auth.go",
+    "explanation": "สร้าง router ด้วย gin.Default() ผูก route ด้วย r.GET() แล้วใช้ context (c) ส่ง response เช่น c.String() หรือ c.JSON()",
+    "notes": [
+      "ติดตั้ง: go get github.com/gin-gonic/gin",
+      "รัน: go run main.go"
+    ]
+  },
+  {
+    "id": "echo",
+    "languageId": "go",
+    "name": "Echo",
+    "slug": "echo",
+    "category": "Web framework",
+    "version": "v4",
+    "url": "https://echo.labstack.com/",
+    "tagline": "เฟรมเวิร์ก Go ที่เน้น performance และ middleware ครบ",
+    "description": "Echo เป็นเฟรมเวิร์กที่มี routing เร็ว, middleware สำเร็จรูปจำนวนมาก และ handler ที่คืน error เพื่อจัดการง่าย",
+    "code": "package main\n\nimport (\n\t\"net/http\"\n\n\t\"github.com/labstack/echo/v4\"\n)\n\nfunc main() {\n\te := echo.New()\n\te.GET(\"/\", func(c echo.Context) error {\n\t\treturn c.String(http.StatusOK, \"Hello from Echo\")\n\t})\n\te.Start(\":8080\")\n}",
+    "structure": "myapp/\n├── go.mod\n├── main.go          # สร้าง echo และ Start\n├── handler/         # logic ตอบ request\n│   └── user.go\n└── middleware/      # auth, log ฯลฯ\n    └── auth.go",
+    "explanation": "handler ของ Echo คืนค่า error ทำให้จัดการข้อผิดพลาดได้รวมศูนย์ ใช้ context ส่ง response ผ่าน c.String() หรือ c.JSON()",
+    "notes": [
+      "ติดตั้ง: go get github.com/labstack/echo/v4",
+      "รัน: go run main.go"
+    ]
+  },
+  {
+    "id": "chi",
+    "languageId": "go",
+    "name": "Chi",
+    "slug": "chi",
+    "category": "Router",
+    "version": "v5",
+    "url": "https://go-chi.io/",
+    "tagline": "HTTP router ขนาดเล็ก เข้ากับ net/http ได้ตรงไปตรงมา",
+    "description": "Chi เป็น router และ middleware stack ที่บางมาก ใช้ interface ของ net/http จึงเหมาะกับคนที่อยากได้ routing ดีขึ้นโดยไม่ทิ้งมาตรฐาน Go",
+    "code": "package main\n\nimport (\n\t\"net/http\"\n\n\t\"github.com/go-chi/chi/v5\"\n)\n\nfunc main() {\n\tr := chi.NewRouter()\n\tr.Get(\"/\", func(w http.ResponseWriter, r *http.Request) {\n\t\tw.Write([]byte(\"Hello from Chi\"))\n\t})\n\thttp.ListenAndServe(\":8080\", r)\n}",
+    "structure": "myapp/\n├── go.mod\n├── main.go          # สร้าง router และ ListenAndServe\n├── routes/          # mount route ย่อย\n│   └── users.go\n└── middleware/      # middleware ของ net/http\n    └── auth.go",
+    "explanation": "สร้าง chi.NewRouter() แล้วผูก route ด้วย r.Get() จากนั้นส่ง router เข้า http.ListenAndServe เหมือน handler มาตรฐาน",
+    "notes": [
+      "ติดตั้ง: go get github.com/go-chi/chi/v5",
+      "เข้ากับ middleware แบบ net/http ได้ดี",
+      "รัน: go run main.go"
+    ]
+  },
+  {
+    "id": "fiber",
+    "languageId": "go",
+    "name": "Fiber",
+    "slug": "fiber",
+    "category": "Web framework",
+    "version": "v2",
+    "url": "https://gofiber.io/",
+    "tagline": "เฟรมเวิร์ก Go ที่ได้แรงบันดาลใจจาก Express และเน้นความเร็ว",
+    "description": "Fiber ใช้ fasthttp อยู่เบื้องหลังและมี API คล้าย Express ทำให้คนจาก Node.js เริ่มเขียน Go API ได้ไว",
+    "code": "package main\n\nimport \"github.com/gofiber/fiber/v2\"\n\nfunc main() {\n\tapp := fiber.New()\n\tapp.Get(\"/\", func(c *fiber.Ctx) error {\n\t\treturn c.SendString(\"Hello from Fiber\")\n\t})\n\tapp.Listen(\":8080\")\n}",
+    "structure": "myapp/\n├── go.mod\n├── main.go          # สร้าง fiber app และ Listen\n├── handlers/        # route handler\n│   └── user.go\n└── middleware/      # middleware ของ Fiber\n    └── auth.go",
+    "explanation": "สร้าง app ด้วย fiber.New() ผูก route ด้วย app.Get() แล้วใช้ context ส่ง response ผ่าน c.SendString() หรือ c.JSON()",
+    "notes": [
+      "ติดตั้ง: go get github.com/gofiber/fiber/v2",
+      "API คล้าย Express แต่ใช้ Go",
+      "รัน: go run main.go"
+    ]
+  }
+]

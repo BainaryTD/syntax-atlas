@@ -108,5 +108,144 @@
       "Python ใช้ except แทน catch"
     ],
     "version": "Python 3.12"
+  },
+  {
+    "id": "python-string-format-basic",
+    "languageId": "python",
+    "topicId": "string-format",
+    "code": "name = \"Bainary\"\nprint(f\"Hello, {name}!\")",
+    "explanation": "แทรกค่าตัวแปรลงในข้อความด้วย f-string",
+    "notes": [
+      "f-string ขึ้นต้นด้วย f แล้วใส่ตัวแปรใน {}",
+      "ใส่นิพจน์ใน {} ได้ เช่น f\"{age + 1}\""
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-ternary-basic",
+    "languageId": "python",
+    "topicId": "ternary",
+    "code": "age = 20\nlabel = \"adult\" if age >= 18 else \"minor\"\nprint(label)",
+    "explanation": "เขียนเงื่อนไขแบบย่อในบรรทัดเดียว",
+    "notes": [
+      "รูปแบบคือ ค่าถ้าจริง if เงื่อนไข else ค่าถ้าเท็จ"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-switch-case-basic",
+    "languageId": "python",
+    "topicId": "switch-case",
+    "code": "status = \"active\"\n\nmatch status:\n    case \"active\":\n        print(\"running\")\n    case \"paused\":\n        print(\"on hold\")\n    case _:\n        print(\"unknown\")",
+    "explanation": "ใช้ match/case เลือกทำงานตามค่าที่ตรงกัน",
+    "notes": [
+      "match เพิ่มเข้ามาใน Python 3.10",
+      "case _ คือกรณี default"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-lambda-basic",
+    "languageId": "python",
+    "topicId": "lambda",
+    "code": "square = lambda x: x * x\nprint(square(5))",
+    "explanation": "สร้างฟังก์ชันสั้น ๆ ด้วย lambda",
+    "notes": [
+      "เหมาะกับฟังก์ชันสั้น ๆ ถ้ายาวควรใช้ def"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-map-filter-basic",
+    "languageId": "python",
+    "topicId": "map-filter",
+    "code": "numbers = [1, 2, 3, 4]\nevens = [n for n in numbers if n % 2 == 0]\ndoubled = [n * 2 for n in numbers]\nprint(evens, doubled)",
+    "explanation": "ใช้ list comprehension เพื่อกรองและแปลงข้อมูล",
+    "notes": [
+      "Pythonic กว่าการใช้ map()/filter() ตรง ๆ ในหลายกรณี"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-class-basic",
+    "languageId": "python",
+    "topicId": "class",
+    "code": "class User:\n    def __init__(self, name):\n        self.name = name\n\n    def greet(self):\n        return f\"Hi, {self.name}\"\n\nuser = User(\"Bainary\")\nprint(user.greet())",
+    "explanation": "สร้าง class ที่มี field และ method",
+    "notes": [
+      "__init__ คือ constructor",
+      "self อ้างถึง instance ปัจจุบัน"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-enum-basic",
+    "languageId": "python",
+    "topicId": "enum",
+    "code": "from enum import Enum\n\nclass Color(Enum):\n    RED = 1\n    GREEN = 2\n\nprint(Color.RED.name)",
+    "explanation": "สร้างชุดค่าคงที่ด้วยคลาส Enum",
+    "notes": [
+      "เข้าถึงชื่อด้วย .name และค่าด้วย .value"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-destructuring-basic",
+    "languageId": "python",
+    "topicId": "destructuring",
+    "code": "point = (1, 2)\nx, y = point\nprint(x, y)",
+    "explanation": "แยกค่าจาก tuple ออกเป็นหลายตัวแปร",
+    "notes": [
+      "ใช้ * เก็บส่วนที่เหลือได้ เช่น a, *rest = [1, 2, 3]"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-interface-trait-basic",
+    "languageId": "python",
+    "topicId": "interface-trait",
+    "code": "from typing import Protocol\n\nclass Greeter(Protocol):\n    def greet(self) -> str: ...\n\nclass User:\n    def greet(self) -> str:\n        return \"Hi\"\n\ndef welcome(g: Greeter) -> None:\n    print(g.greet())\n\nwelcome(User())",
+    "explanation": "ใช้ Protocol กำหนดสัญญาแบบ structural typing",
+    "notes": [
+      "User ไม่ต้องสืบทอด Greeter ขอแค่มี method ครบ",
+      "ทางเลือกอื่นคือ abc.ABC แบบ nominal"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-generics-basic",
+    "languageId": "python",
+    "topicId": "generics",
+    "code": "def first[T](items: list[T]) -> T:\n    return items[0]\n\nprint(first([1, 2, 3]))",
+    "explanation": "Python 3.12 ประกาศ type parameter ด้วย [T]",
+    "notes": [
+      "ก่อน 3.12 ต้องใช้ TypeVar จาก typing",
+      "type hint ไม่ถูกบังคับตอนรัน"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-null-optional-basic",
+    "languageId": "python",
+    "topicId": "null-optional",
+    "code": "from typing import Optional\n\ndef greet(name: Optional[str]) -> str:\n    if name is None:\n        return \"Hi, guest\"\n    return f\"Hi, {name}\"\n\nprint(greet(None))",
+    "explanation": "ใช้ Optional ระบุว่าค่าอาจเป็น None ได้",
+    "notes": [
+      "ตรวจด้วย is None",
+      "Optional[str] เทียบเท่ากับ str | None"
+    ],
+    "version": "Python 3.12"
+  },
+  {
+    "id": "python-async-concurrency-basic",
+    "languageId": "python",
+    "topicId": "async-concurrency",
+    "code": "import asyncio\n\nasync def main():\n    await asyncio.sleep(1)\n    print(\"done\")\n\nasyncio.run(main())",
+    "explanation": "ใช้ async/await กับ asyncio รันงานแบบไม่บล็อก",
+    "notes": [
+      "await หยุดรอ coroutine โดยไม่บล็อก event loop",
+      "asyncio.run เริ่ม event loop ให้"
+    ],
+    "version": "Python 3.12"
   }
 ]

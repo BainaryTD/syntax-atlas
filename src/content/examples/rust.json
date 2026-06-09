@@ -108,5 +108,142 @@
       "Rust ไม่มี try/catch แบบ exception ทั่วไป"
     ],
     "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-string-format-basic",
+    "languageId": "rust",
+    "topicId": "string-format",
+    "code": "let name = \"Bainary\";\nprintln!(\"Hello, {name}!\");",
+    "explanation": "แทรกค่าตัวแปรลงใน println! ได้โดยตรง",
+    "notes": [
+      "Rust รองรับการใส่ชื่อตัวแปรใน {} ตั้งแต่ edition 2021"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-ternary-basic",
+    "languageId": "rust",
+    "topicId": "ternary",
+    "code": "let age = 20;\nlet label = if age >= 18 { \"adult\" } else { \"minor\" };\nprintln!(\"{label}\");",
+    "explanation": "Rust ใช้ if แบบ expression แทน ternary",
+    "notes": [
+      "if/else คืนค่าได้ ทั้งสองฝั่งต้องเป็น type เดียวกัน"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-switch-case-basic",
+    "languageId": "rust",
+    "topicId": "switch-case",
+    "code": "let status = \"active\";\n\nmatch status {\n    \"active\" => println!(\"running\"),\n    \"paused\" => println!(\"on hold\"),\n    _ => println!(\"unknown\"),\n}",
+    "explanation": "ใช้ match เลือกทำงานตามค่าที่ตรงกัน",
+    "notes": [
+      "match ต้องครอบคลุมทุกกรณี _ คือกรณีที่เหลือทั้งหมด"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-lambda-basic",
+    "languageId": "rust",
+    "topicId": "lambda",
+    "code": "let square = |x: i32| x * x;\nprintln!(\"{}\", square(5));",
+    "explanation": "สร้าง closure ด้วยเครื่องหมาย | |",
+    "notes": [
+      "closure จับตัวแปรจาก scope รอบ ๆ มาใช้ได้"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-map-filter-basic",
+    "languageId": "rust",
+    "topicId": "map-filter",
+    "code": "let numbers = vec![1, 2, 3, 4];\nlet doubled: Vec<i32> = numbers.iter().map(|n| n * 2).collect();\nlet evens: Vec<i32> = numbers.into_iter().filter(|n| n % 2 == 0).collect();\nprintln!(\"{:?} {:?}\", doubled, evens);",
+    "explanation": "ใช้ iterator adapter map และ filter แล้ว collect",
+    "notes": [
+      "iterator เป็น lazy จะทำงานเมื่อเรียก collect",
+      "{:?} ใช้พิมพ์ค่าแบบ debug"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-class-basic",
+    "languageId": "rust",
+    "topicId": "class",
+    "code": "struct User {\n    name: String,\n}\n\nimpl User {\n    fn greet(&self) -> String {\n        format!(\"Hi, {}\", self.name)\n    }\n}\n\nfn main() {\n    let user = User { name: String::from(\"Bainary\") };\n    println!(\"{}\", user.greet());\n}",
+    "explanation": "Rust แยก struct (ข้อมูล) ออกจาก impl (method)",
+    "notes": [
+      "impl block คือที่รวม method ของ struct",
+      "&self คือการยืม instance มาใช้แบบไม่เป็นเจ้าของ"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-enum-basic",
+    "languageId": "rust",
+    "topicId": "enum",
+    "code": "enum Color {\n    Red,\n    Green,\n}\n\nlet c = Color::Red;\n\nmatch c {\n    Color::Red => println!(\"red\"),\n    Color::Green => println!(\"green\"),\n}",
+    "explanation": "enum ของ Rust เก็บข้อมูลในแต่ละ variant ได้ด้วย",
+    "notes": [
+      "มักใช้คู่กับ match เพื่อแยกแต่ละ variant"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-destructuring-basic",
+    "languageId": "rust",
+    "topicId": "destructuring",
+    "code": "let point = (1, 2);\nlet (x, y) = point;\nprintln!(\"{} {}\", x, y);",
+    "explanation": "แยกค่าจาก tuple ด้วย pattern ใน let",
+    "notes": [
+      "destructure struct ก็ได้ เช่น let Point { x, y } = p;"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-interface-trait-basic",
+    "languageId": "rust",
+    "topicId": "interface-trait",
+    "code": "trait Greeter {\n    fn greet(&self) -> String;\n}\n\nstruct User;\n\nimpl Greeter for User {\n    fn greet(&self) -> String {\n        String::from(\"Hi\")\n    }\n}\n\nfn main() {\n    let u = User;\n    println!(\"{}\", u.greet());\n}",
+    "explanation": "trait กำหนดพฤติกรรมที่ type ต้อง implement",
+    "notes": [
+      "trait คล้าย interface แต่เพิ่ม default method ได้ด้วย"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-generics-basic",
+    "languageId": "rust",
+    "topicId": "generics",
+    "code": "fn first<T: Copy>(items: &[T]) -> T {\n    items[0]\n}\n\nfn main() {\n    println!(\"{}\", first(&[1, 2, 3]));\n}",
+    "explanation": "ใช้ <T> พร้อม trait bound กำหนดความสามารถของ T",
+    "notes": [
+      "T: Copy บอกว่า T ต้อง copy ค่าได้",
+      "generics ของ Rust เป็น zero-cost ตอน compile"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-null-optional-basic",
+    "languageId": "rust",
+    "topicId": "null-optional",
+    "code": "let name: Option<&str> = None;\nlet result = name.unwrap_or(\"guest\");\nprintln!(\"{}\", result);",
+    "explanation": "Rust ใช้ Option<T> แทนค่าที่อาจไม่มี",
+    "notes": [
+      "Some(x) คือมีค่า None คือไม่มี",
+      "unwrap_or กำหนดค่า default เมื่อเป็น None"
+    ],
+    "version": "Rust 1.78+"
+  },
+  {
+    "id": "rust-async-concurrency-basic",
+    "languageId": "rust",
+    "topicId": "async-concurrency",
+    "code": "use std::thread;\n\nfn main() {\n    let handle = thread::spawn(|| {\n        println!(\"done\");\n    });\n\n    handle.join().unwrap();\n}",
+    "explanation": "Rust สร้าง thread ด้วย thread::spawn แล้วรอด้วย join",
+    "notes": [
+      "join() รอให้ thread ทำงานเสร็จ",
+      "งาน async แบบ .await ต้องใช้ runtime เช่น tokio เพิ่ม"
+    ],
+    "version": "Rust 1.78+"
   }
 ]

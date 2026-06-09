@@ -1,0 +1,78 @@
+[
+  {
+    "id": "actix-web",
+    "languageId": "rust",
+    "name": "Actix Web",
+    "slug": "actix-web",
+    "category": "Web framework",
+    "version": "4",
+    "url": "https://actix.rs/",
+    "tagline": "เฟรมเวิร์ก Rust ที่ performance สูงมากและ feature ครบ",
+    "description": "Actix Web เป็นเฟรมเวิร์กที่ติดอันดับเร็วที่สุดตัวหนึ่ง รองรับ async เต็มรูปแบบ มี extractor และ middleware ครบครัน",
+    "code": "use actix_web::{get, App, HttpServer, Responder};\n\n#[get(\"/\")]\nasync fn home() -> impl Responder {\n    \"Hello from Actix\"\n}\n\n#[actix_web::main]\nasync fn main() -> std::io::Result<()> {\n    HttpServer::new(|| App::new().service(home))\n        .bind((\"127.0.0.1\", 8080))?\n        .run()\n        .await\n}",
+    "structure": "myapp/\n├── Cargo.toml       # dependency และ metadata\n└── src/\n    ├── main.rs      # สร้าง HttpServer และ run\n    └── handlers.rs  # ฟังก์ชัน handler",
+    "explanation": "ใช้ attribute #[get(\"/\")] ผูก handler async เข้ากับ route แล้วลงทะเบียนด้วย .service() ใน HttpServer ที่รันบน async runtime ของ Actix",
+    "notes": [
+      "เพิ่ม dependency: cargo add actix-web",
+      "รัน: cargo run",
+      "ต้องการ async runtime ซึ่ง #[actix_web::main] จัดให้"
+    ]
+  },
+  {
+    "id": "axum",
+    "languageId": "rust",
+    "name": "Axum",
+    "slug": "axum",
+    "category": "Web framework",
+    "version": "0.8",
+    "url": "https://github.com/tokio-rs/axum",
+    "tagline": "เฟรมเวิร์กจากทีม Tokio เน้น ergonomics และทำงานร่วมกับ tower",
+    "description": "Axum สร้างบน Tokio และ tower เน้น API ที่อ่านง่าย ใช้ extractor แบบ type-safe และผูกกับ ecosystem ของ Tokio ได้ดี",
+    "code": "use axum::{routing::get, Router};\n\n#[tokio::main]\nasync fn main() {\n    let app = Router::new().route(\"/\", get(|| async { \"Hello from Axum\" }));\n    let listener = tokio::net::TcpListener::bind(\"127.0.0.1:8080\").await.unwrap();\n    axum::serve(listener, app).await.unwrap();\n}",
+    "structure": "myapp/\n├── Cargo.toml       # dependency และ metadata\n└── src/\n    ├── main.rs      # สร้าง Router และ serve\n    └── routes.rs    # ฟังก์ชัน handler",
+    "explanation": "สร้าง Router แล้วผูก path เข้ากับ handler ด้วย get() จากนั้น bind listener ของ Tokio และเสิร์ฟด้วย axum::serve",
+    "notes": [
+      "เพิ่ม dependency: cargo add axum tokio --features tokio/full",
+      "รัน: cargo run",
+      "ใช้ Tokio เป็น async runtime"
+    ]
+  },
+  {
+    "id": "rocket",
+    "languageId": "rust",
+    "name": "Rocket",
+    "slug": "rocket",
+    "category": "Web framework",
+    "version": "0.5",
+    "url": "https://rocket.rs/",
+    "tagline": "เฟรมเวิร์ก Rust ที่ syntax อ่านง่ายและใช้ attribute routing",
+    "description": "Rocket เน้น developer experience ด้วย macro และ attribute routing ที่อ่านง่าย พร้อม request guard และ fairing สำหรับงานเว็บทั่วไป",
+    "code": "#[macro_use]\nextern crate rocket;\n\n#[get(\"/\")]\nfn home() -> &'static str {\n    \"Hello from Rocket\"\n}\n\n#[launch]\nfn rocket() -> _ {\n    rocket::build().mount(\"/\", routes![home])\n}",
+    "structure": "myapp/\n├── Cargo.toml       # dependency และ metadata\n└── src/\n    ├── main.rs      # mount route และ launch\n    └── routes.rs    # route handlers",
+    "explanation": "ประกาศ route ด้วย #[get(\"/\")] แล้ว mount เข้ากับ Rocket instance ผ่าน routes![...] ก่อน launch server",
+    "notes": [
+      "เพิ่ม dependency: cargo add rocket",
+      "รัน: cargo run",
+      "เหมาะกับเว็บ/API ที่อยากได้ syntax declarative"
+    ]
+  },
+  {
+    "id": "warp",
+    "languageId": "rust",
+    "name": "Warp",
+    "slug": "warp",
+    "category": "Web framework",
+    "version": "0.3",
+    "url": "https://github.com/seanmonstar/warp",
+    "tagline": "เฟรมเวิร์กแบบ filter composition สำหรับ Rust async",
+    "description": "Warp สร้างบน hyper และ Tokio โดยใช้แนวคิด filter มาประกอบ route, validation และ middleware เหมาะกับคนที่ชอบ composition แบบ functional",
+    "code": "use warp::Filter;\n\n#[tokio::main]\nasync fn main() {\n    let route = warp::path::end().map(|| \"Hello from Warp\");\n    warp::serve(route).run(([127, 0, 0, 1], 8080)).await;\n}",
+    "structure": "myapp/\n├── Cargo.toml       # dependency และ metadata\n└── src/\n    ├── main.rs      # compose filters และ serve\n    └── filters.rs   # filter แยกตาม feature",
+    "explanation": "สร้าง filter ที่ match path แล้ว map เป็น response จากนั้นส่งเข้า warp::serve เพื่อรัน HTTP server",
+    "notes": [
+      "เพิ่ม dependency: cargo add warp tokio --features tokio/full",
+      "รัน: cargo run",
+      "เหมาะกับ route ที่ประกอบจาก filter หลายชั้น"
+    ]
+  }
+]

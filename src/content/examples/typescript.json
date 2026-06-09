@@ -108,5 +108,138 @@
       "error ใน catch มักมี type เป็น unknown ใน config ที่ strict"
     ],
     "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-string-format-basic",
+    "languageId": "typescript",
+    "topicId": "string-format",
+    "code": "const name: string = \"Bainary\";\nconsole.log(`Hello, ${name}!`);",
+    "explanation": "แทรกค่าตัวแปรด้วย template literal",
+    "notes": [
+      "ใช้ได้เหมือน JavaScript แต่ตรวจ type ของค่าที่แทรก"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-ternary-basic",
+    "languageId": "typescript",
+    "topicId": "ternary",
+    "code": "const age: number = 20;\nconst label: string = age >= 18 ? \"adult\" : \"minor\";\nconsole.log(label);",
+    "explanation": "เขียนเงื่อนไขแบบย่อด้วย ternary operator",
+    "notes": [
+      "TypeScript จะ infer type ของผลลัพธ์ทั้งสองฝั่ง"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-switch-case-basic",
+    "languageId": "typescript",
+    "topicId": "switch-case",
+    "code": "const status: string = \"active\";\n\nswitch (status) {\n  case \"active\":\n    console.log(\"running\");\n    break;\n  case \"paused\":\n    console.log(\"on hold\");\n    break;\n  default:\n    console.log(\"unknown\");\n}",
+    "explanation": "เลือกทำงานตามค่าด้วย switch",
+    "notes": [
+      "เหมาะกับ union type เพราะ TypeScript ช่วยตรวจ case ที่ขาด"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-lambda-basic",
+    "languageId": "typescript",
+    "topicId": "lambda",
+    "code": "const square = (x: number): number => x * x;\nconsole.log(square(5));",
+    "explanation": "สร้างฟังก์ชันนิรนามพร้อมระบุ type",
+    "notes": [
+      "ระบุ type ของ parameter และ return ได้ชัดเจน"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-map-filter-basic",
+    "languageId": "typescript",
+    "topicId": "map-filter",
+    "code": "const numbers: number[] = [1, 2, 3, 4];\nconst evens = numbers.filter((n) => n % 2 === 0);\nconst doubled = numbers.map((n) => n * 2);\nconsole.log(evens, doubled);",
+    "explanation": "ใช้ filter และ map พร้อมการตรวจ type",
+    "notes": [
+      "ผลลัพธ์ของ map/filter ยังคง type เป็น number[]"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-class-basic",
+    "languageId": "typescript",
+    "topicId": "class",
+    "code": "class User {\n  constructor(private name: string) {}\n\n  greet(): string {\n    return `Hi, ${this.name}`;\n  }\n}\n\nconst user = new User(\"Bainary\");\nconsole.log(user.greet());",
+    "explanation": "สร้าง class พร้อม access modifier",
+    "notes": [
+      "private name ใน constructor ประกาศและกำหนดค่า field ให้อัตโนมัติ"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-enum-basic",
+    "languageId": "typescript",
+    "topicId": "enum",
+    "code": "enum Color {\n  Red,\n  Green,\n}\n\nconsole.log(Color.Red);",
+    "explanation": "TypeScript มี enum ในตัว",
+    "notes": [
+      "ค่าเริ่มต้นเป็นตัวเลขเริ่มจาก 0",
+      "หลายทีมนิยมใช้ union ของ string literal แทน enum"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-destructuring-basic",
+    "languageId": "typescript",
+    "topicId": "destructuring",
+    "code": "const user: { name: string; age: number } = { name: \"Bainary\", age: 20 };\nconst { name, age } = user;\nconsole.log(name, age);",
+    "explanation": "destructuring พร้อมคง type ของแต่ละ field",
+    "notes": [
+      "name และ age จะมี type เป็น string และ number อัตโนมัติ"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-interface-trait-basic",
+    "languageId": "typescript",
+    "topicId": "interface-trait",
+    "code": "interface Greeter {\n  greet(): string;\n}\n\nclass User implements Greeter {\n  greet(): string {\n    return \"Hi\";\n  }\n}\n\nfunction welcome(g: Greeter): void {\n  console.log(g.greet());\n}\n\nwelcome(new User());",
+    "explanation": "interface กำหนดรูปร่างของ object หรือ class",
+    "notes": [
+      "interface หายไปตอน compile ไม่เหลือใน JavaScript"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-generics-basic",
+    "languageId": "typescript",
+    "topicId": "generics",
+    "code": "function first<T>(items: T[]): T {\n  return items[0];\n}\n\nconsole.log(first([1, 2, 3]));",
+    "explanation": "ใช้ <T> ประกาศ type parameter ที่คง type ไว้",
+    "notes": [
+      "TypeScript จะ infer T จาก argument ให้อัตโนมัติ"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-null-optional-basic",
+    "languageId": "typescript",
+    "topicId": "null-optional",
+    "code": "type User = { name: string } | null;\n\nconst user: User = null;\nconst name = user?.name ?? \"guest\";\nconsole.log(name);",
+    "explanation": "type ระบุค่าที่อาจเป็น null พร้อมจัดการด้วย ?. และ ??",
+    "notes": [
+      "strictNullChecks บังคับให้จัดการกรณี null ก่อนใช้งาน"
+    ],
+    "version": "TypeScript 5.x"
+  },
+  {
+    "id": "typescript-async-concurrency-basic",
+    "languageId": "typescript",
+    "topicId": "async-concurrency",
+    "code": "async function main(): Promise<void> {\n  await new Promise((resolve) => setTimeout(resolve, 1000));\n  console.log(\"done\");\n}\n\nmain();",
+    "explanation": "async function คืน Promise พร้อมระบุ type ผลลัพธ์",
+    "notes": [
+      "Promise<void> บอกว่าไม่มีค่าคืนกลับ"
+    ],
+    "version": "TypeScript 5.x"
   }
 ]

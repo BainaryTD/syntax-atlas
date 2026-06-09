@@ -108,5 +108,145 @@
       "Java แยก checked และ unchecked exceptions"
     ],
     "version": "Java 21"
+  },
+  {
+    "id": "java-string-format-basic",
+    "languageId": "java",
+    "topicId": "string-format",
+    "code": "String name = \"Bainary\";\nSystem.out.println(\"Hello, %s!\".formatted(name));",
+    "explanation": "จัดรูปแบบข้อความด้วย String.formatted",
+    "notes": [
+      ".formatted() เพิ่มมาใน Java 15 ใช้แทน String.format ได้",
+      "%s แทน string, %d แทนจำนวนเต็ม"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-ternary-basic",
+    "languageId": "java",
+    "topicId": "ternary",
+    "code": "int age = 20;\nString label = age >= 18 ? \"adult\" : \"minor\";\nSystem.out.println(label);",
+    "explanation": "เขียนเงื่อนไขแบบย่อด้วย ternary operator",
+    "notes": [
+      "รูปแบบคือ เงื่อนไข ? ค่าถ้าจริง : ค่าถ้าเท็จ"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-switch-case-basic",
+    "languageId": "java",
+    "topicId": "switch-case",
+    "code": "String status = \"active\";\n\nswitch (status) {\n    case \"active\" -> System.out.println(\"running\");\n    case \"paused\" -> System.out.println(\"on hold\");\n    default -> System.out.println(\"unknown\");\n}",
+    "explanation": "ใช้ switch แบบ arrow ที่ไม่ต้องมี break",
+    "notes": [
+      "รูปแบบ -> เพิ่มมาตั้งแต่ Java 14 และไม่ fall through"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-lambda-basic",
+    "languageId": "java",
+    "topicId": "lambda",
+    "code": "Function<Integer, Integer> square = x -> x * x;\nSystem.out.println(square.apply(5));",
+    "explanation": "สร้าง lambda แล้วเก็บใน functional interface",
+    "notes": [
+      "ต้อง import java.util.function.Function",
+      "เรียกใช้ด้วย .apply()"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-map-filter-basic",
+    "languageId": "java",
+    "topicId": "map-filter",
+    "code": "List<Integer> numbers = List.of(1, 2, 3, 4);\nList<Integer> evens = numbers.stream()\n    .filter(n -> n % 2 == 0)\n    .toList();\nSystem.out.println(evens);",
+    "explanation": "ใช้ Stream API กรองข้อมูลแบบ functional",
+    "notes": [
+      "ต้อง import java.util.List",
+      ".toList() เพิ่มมาใน Java 16"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-class-basic",
+    "languageId": "java",
+    "topicId": "class",
+    "code": "class User {\n    private final String name;\n\n    User(String name) {\n        this.name = name;\n    }\n\n    String greet() {\n        return \"Hi, \" + name;\n    }\n}\n\nUser user = new User(\"Bainary\");\nSystem.out.println(user.greet());",
+    "explanation": "สร้าง class พร้อม field, constructor และ method",
+    "notes": [
+      "final ทำให้ field เปลี่ยนค่าไม่ได้หลังกำหนด",
+      "Java 21 ยังมี record สำหรับ data class แบบสั้น"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-enum-basic",
+    "languageId": "java",
+    "topicId": "enum",
+    "code": "enum Color {\n    RED,\n    GREEN\n}\n\nColor c = Color.RED;\nSystem.out.println(c);",
+    "explanation": "Java มี enum เป็น type เต็มรูปแบบ",
+    "notes": [
+      "enum ใน Java เป็น class ชนิดพิเศษ มี field และ method ได้"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-destructuring-basic",
+    "languageId": "java",
+    "topicId": "destructuring",
+    "code": "record Point(int x, int y) {}\n\nObject obj = new Point(1, 2);\n\nif (obj instanceof Point(int x, int y)) {\n    System.out.println(x + \" \" + y);\n}",
+    "explanation": "Java 21 แยกค่าจาก record ด้วย record pattern",
+    "notes": [
+      "record pattern เพิ่มเข้ามาใน Java 21",
+      "ใช้คู่กับ instanceof หรือ switch ได้"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-interface-trait-basic",
+    "languageId": "java",
+    "topicId": "interface-trait",
+    "code": "interface Greeter {\n    String greet();\n}\n\nclass User implements Greeter {\n    public String greet() {\n        return \"Hi\";\n    }\n}\n\nGreeter g = new User();\nSystem.out.println(g.greet());",
+    "explanation": "Java ใช้ interface กับ implements กำหนดสัญญา",
+    "notes": [
+      "ตั้งแต่ Java 8 interface มี default method ได้"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-generics-basic",
+    "languageId": "java",
+    "topicId": "generics",
+    "code": "static <T> T first(List<T> items) {\n    return items.get(0);\n}\n\nSystem.out.println(first(List.of(1, 2, 3)));",
+    "explanation": "ประกาศ generic method ด้วย <T> ก่อน return type",
+    "notes": [
+      "ต้อง import java.util.List",
+      "generics ของ Java ใช้ type erasure ตอน compile"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-null-optional-basic",
+    "languageId": "java",
+    "topicId": "null-optional",
+    "code": "Optional<String> name = Optional.empty();\nString result = name.orElse(\"guest\");\nSystem.out.println(result);",
+    "explanation": "ใช้ Optional<T> ห่อค่าที่อาจไม่มีอยู่",
+    "notes": [
+      "ต้อง import java.util.Optional",
+      "orElse คืนค่า default เมื่อ empty"
+    ],
+    "version": "Java 21"
+  },
+  {
+    "id": "java-async-concurrency-basic",
+    "languageId": "java",
+    "topicId": "async-concurrency",
+    "code": "try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {\n    executor.submit(() -> System.out.println(\"done\"));\n}",
+    "explanation": "Java 21 ใช้ virtual thread รันงานพร้อมกันแบบเบา",
+    "notes": [
+      "ต้อง import java.util.concurrent.Executors",
+      "virtual thread เป็น stable ตั้งแต่ Java 21"
+    ],
+    "version": "Java 21"
   }
 ]

@@ -3,6 +3,7 @@ import Link from "next/link";
 const links = [
   { href: "/topics", label: "หัวข้อ" },
   { href: "/languages", label: "ภาษา" },
+  { href: "/web", label: "เว็บ" },
   { href: "/compare", label: "เปรียบเทียบ" },
 ];
 

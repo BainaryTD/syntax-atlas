@@ -108,5 +108,142 @@
       "Go ไม่มี try/catch แบบภาษาอื่น"
     ],
     "version": "Go 1.22+"
+  },
+  {
+    "id": "go-string-format-basic",
+    "languageId": "go",
+    "topicId": "string-format",
+    "code": "name := \"Bainary\"\nfmt.Printf(\"Hello, %s!\\n\", name)",
+    "explanation": "จัดรูปแบบข้อความด้วย Printf และ verb %s",
+    "notes": [
+      "%s แทน string, %d แทนจำนวนเต็ม",
+      "Printf ไม่ขึ้นบรรทัดใหม่ให้เอง ต้องใส่ \\n"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-ternary-basic",
+    "languageId": "go",
+    "topicId": "ternary",
+    "code": "age := 20\nlabel := \"minor\"\nif age >= 18 {\n    label = \"adult\"\n}\nfmt.Println(label)",
+    "explanation": "Go ไม่มี ternary จึงใช้ if แทน",
+    "notes": [
+      "ผู้ออกแบบ Go ตั้งใจไม่ใส่ ternary operator เพื่อให้อ่านง่าย"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-switch-case-basic",
+    "languageId": "go",
+    "topicId": "switch-case",
+    "code": "status := \"active\"\n\nswitch status {\ncase \"active\":\n    fmt.Println(\"running\")\ncase \"paused\":\n    fmt.Println(\"on hold\")\ndefault:\n    fmt.Println(\"unknown\")\n}",
+    "explanation": "เลือกทำงานตามค่าด้วย switch",
+    "notes": [
+      "Go ไม่ fall through อัตโนมัติ จึงไม่ต้องใส่ break"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-lambda-basic",
+    "languageId": "go",
+    "topicId": "lambda",
+    "code": "square := func(x int) int {\n    return x * x\n}\nfmt.Println(square(5))",
+    "explanation": "สร้างฟังก์ชันนิรนามแล้วเก็บในตัวแปร",
+    "notes": [
+      "Go เรียกว่า anonymous function หรือ function literal"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-map-filter-basic",
+    "languageId": "go",
+    "topicId": "map-filter",
+    "code": "numbers := []int{1, 2, 3, 4}\nvar evens []int\nfor _, n := range numbers {\n    if n%2 == 0 {\n        evens = append(evens, n)\n    }\n}\nfmt.Println(evens)",
+    "explanation": "กรองข้อมูลด้วย loop เพราะ Go ไม่มี filter ใน stdlib",
+    "notes": [
+      "Go เน้นเขียน loop ตรง ๆ มากกว่า map/filter แบบ functional"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-class-basic",
+    "languageId": "go",
+    "topicId": "class",
+    "code": "type User struct {\n    Name string\n}\n\nfunc (u User) Greet() string {\n    return \"Hi, \" + u.Name\n}\n\nfunc main() {\n    user := User{Name: \"Bainary\"}\n    fmt.Println(user.Greet())\n}",
+    "explanation": "Go ใช้ struct ร่วมกับ method แทน class",
+    "notes": [
+      "(u User) คือ receiver ที่ผูก method เข้ากับ struct",
+      "Go ไม่มี class หรือ inheritance"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-enum-basic",
+    "languageId": "go",
+    "topicId": "enum",
+    "code": "type Color int\n\nconst (\n    Red Color = iota\n    Green\n)\n\nfmt.Println(Red)",
+    "explanation": "Go ใช้ const ร่วมกับ iota สร้างค่าคงที่แบบลำดับ",
+    "notes": [
+      "iota เริ่มที่ 0 และเพิ่มทีละ 1 ในแต่ละบรรทัด",
+      "Go ไม่มี enum keyword โดยตรง"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-destructuring-basic",
+    "languageId": "go",
+    "topicId": "destructuring",
+    "code": "func minMax() (int, int) {\n    return 1, 9\n}\n\nfunc main() {\n    lo, hi := minMax()\n    fmt.Println(lo, hi)\n}",
+    "explanation": "Go แยกค่าจาก multiple return values ด้วยการ assign พร้อมกัน",
+    "notes": [
+      "Go ไม่มี destructuring ของ struct/slice ตรง ๆ แบบภาษาอื่น"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-interface-trait-basic",
+    "languageId": "go",
+    "topicId": "interface-trait",
+    "code": "type Greeter interface {\n    Greet() string\n}\n\ntype User struct{}\n\nfunc (u User) Greet() string {\n    return \"Hi\"\n}\n\nfunc main() {\n    var g Greeter = User{}\n    fmt.Println(g.Greet())\n}",
+    "explanation": "Go ใช้ interface แบบ implicit ไม่ต้องประกาศ implements",
+    "notes": [
+      "ถ้า type มี method ครบตาม interface ก็ถือว่า implement ทันที"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-generics-basic",
+    "languageId": "go",
+    "topicId": "generics",
+    "code": "func First[T any](items []T) T {\n    return items[0]\n}\n\nfunc main() {\n    fmt.Println(First([]int{1, 2, 3}))\n}",
+    "explanation": "Go รองรับ generics ด้วย type parameter [T any]",
+    "notes": [
+      "generics เพิ่มเข้ามาใน Go 1.18",
+      "any คือ constraint ที่รับได้ทุก type"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-null-optional-basic",
+    "languageId": "go",
+    "topicId": "null-optional",
+    "code": "user := map[string]string{}\n\nname, ok := user[\"name\"]\nif !ok {\n    name = \"guest\"\n}\nfmt.Println(name)",
+    "explanation": "Go ใช้ค่า zero และ comma-ok เช็คว่ามีค่าหรือไม่",
+    "notes": [
+      "pointer ที่เป็น nil ใช้แทนค่าว่างได้เช่นกัน"
+    ],
+    "version": "Go 1.22+"
+  },
+  {
+    "id": "go-async-concurrency-basic",
+    "languageId": "go",
+    "topicId": "async-concurrency",
+    "code": "func main() {\n    done := make(chan bool)\n\n    go func() {\n        fmt.Println(\"done\")\n        done <- true\n    }()\n\n    <-done\n}",
+    "explanation": "Go รันงานพร้อมกันด้วย goroutine และสื่อสารผ่าน channel",
+    "notes": [
+      "go นำหน้าเพื่อสั่งรัน goroutine",
+      "channel ใช้รอและส่งค่าระหว่าง goroutine"
+    ],
+    "version": "Go 1.22+"
   }
 ]

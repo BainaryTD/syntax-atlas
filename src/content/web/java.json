@@ -1,0 +1,77 @@
+[
+  {
+    "id": "spring-boot",
+    "languageId": "java",
+    "name": "Spring Boot",
+    "slug": "spring-boot",
+    "category": "Full-stack framework",
+    "version": "3.x",
+    "url": "https://spring.io/projects/spring-boot",
+    "tagline": "เฟรมเวิร์กมาตรฐานของ Java enterprise มาพร้อมทุกอย่าง",
+    "description": "Spring Boot ลดความยุ่งยากในการตั้งค่า Spring ด้วย auto-configuration เหมาะกับงาน enterprise และ microservices ขนาดใหญ่",
+    "code": "import org.springframework.boot.SpringApplication;\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\nimport org.springframework.web.bind.annotation.GetMapping;\nimport org.springframework.web.bind.annotation.RestController;\n\n@RestController\n@SpringBootApplication\npublic class App {\n    @GetMapping(\"/\")\n    String home() {\n        return \"Hello from Spring Boot\";\n    }\n\n    public static void main(String[] args) {\n        SpringApplication.run(App.class, args);\n    }\n}",
+    "structure": "myapp/\n├── pom.xml          # dependency (Maven)\n└── src/main/\n    ├── java/com/example/\n    │   ├── App.java              # main + bootstrap\n    │   └── controller/\n    │       └── HomeController.java\n    └── resources/\n        └── application.properties  # config",
+    "explanation": "ใช้ @RestController ทำให้คลาสรับ request ได้ และ @GetMapping ผูก method เข้ากับ route ส่วน main() เรียก SpringApplication.run เพื่อ start server",
+    "notes": [
+      "สร้างโปรเจกต์ที่ start.spring.io แล้วเลือก dependency Spring Web",
+      "รัน: ./mvnw spring-boot:run",
+      "ดีฟอลต์รันที่พอร์ต 8080"
+    ]
+  },
+  {
+    "id": "javalin",
+    "languageId": "java",
+    "name": "Javalin",
+    "slug": "javalin",
+    "category": "Lightweight framework",
+    "version": "6",
+    "url": "https://javalin.io/",
+    "tagline": "เฟรมเวิร์ก Java/Kotlin ขนาดเล็ก เขียนสั้น เริ่มเร็ว",
+    "description": "Javalin เป็นเฟรมเวิร์กน้ำหนักเบาที่ API กระชับ ไม่ต้องใช้ annotation เยอะ เหมาะกับ API หรือเว็บเล็ก ๆ ที่อยากเริ่มไว",
+    "code": "import io.javalin.Javalin;\n\npublic class App {\n    public static void main(String[] args) {\n        Javalin app = Javalin.create().start(7000);\n        app.get(\"/\", ctx -> ctx.result(\"Hello from Javalin\"));\n    }\n}",
+    "structure": "myapp/\n├── pom.xml          # dependency (Maven)\n└── src/main/java/com/example/\n    ├── App.java          # main + start server\n    └── controller/\n        └── UserController.java",
+    "explanation": "สร้างและสตาร์ทเซิร์ฟเวอร์ด้วย Javalin.create().start(7000) แล้วผูก route ด้วย app.get() โดยใช้ context (ctx) ส่ง response",
+    "notes": [
+      "เพิ่ม dependency io.javalin:javalin ใน Maven/Gradle",
+      "ตัวอย่างนี้รันที่พอร์ต 7000"
+    ]
+  },
+  {
+    "id": "quarkus",
+    "languageId": "java",
+    "name": "Quarkus",
+    "slug": "quarkus",
+    "category": "Cloud-native framework",
+    "version": "3.x",
+    "url": "https://quarkus.io/",
+    "tagline": "เฟรมเวิร์ก Java สำหรับ cloud-native และ container ที่ start เร็ว",
+    "description": "Quarkus ออกแบบมาสำหรับ Kubernetes และ native image โดยใช้มาตรฐาน Jakarta/RESTEasy Reactive เหมาะกับ microservices ที่ต้องการ footprint ต่ำ",
+    "code": "import jakarta.ws.rs.GET;\nimport jakarta.ws.rs.Path;\n\n@Path(\"/\")\npublic class GreetingResource {\n    @GET\n    public String home() {\n        return \"Hello from Quarkus\";\n    }\n}",
+    "structure": "myapp/\n├── pom.xml\n└── src/main/\n    ├── java/org/acme/\n    │   └── GreetingResource.java  # REST endpoint\n    └── resources/\n        └── application.properties # config",
+    "explanation": "ประกาศ resource ด้วย @Path แล้วใช้ @GET บน method เพื่อสร้าง endpoint แบบ REST ตามมาตรฐาน Jakarta",
+    "notes": [
+      "สร้างโปรเจกต์: quarkus create app org.acme:myapp",
+      "รัน dev: ./mvnw quarkus:dev",
+      "เหมาะกับ microservices และ container"
+    ]
+  },
+  {
+    "id": "micronaut",
+    "languageId": "java",
+    "name": "Micronaut",
+    "slug": "micronaut",
+    "category": "Microservice framework",
+    "version": "4.x",
+    "url": "https://micronaut.io/",
+    "tagline": "เฟรมเวิร์ก JVM ที่ startup เร็วและ DI ทำตอน compile-time",
+    "description": "Micronaut เน้น dependency injection แบบ compile-time ลด reflection ทำให้ startup เร็วและใช้ memory น้อย เหมาะกับ microservices และ serverless",
+    "code": "import io.micronaut.http.annotation.Controller;\nimport io.micronaut.http.annotation.Get;\n\n@Controller(\"/\")\npublic class HomeController {\n    @Get\n    String home() {\n        return \"Hello from Micronaut\";\n    }\n}",
+    "structure": "myapp/\n├── build.gradle\n└── src/main/\n    ├── java/example/\n    │   ├── Application.java       # main app\n    │   └── HomeController.java    # endpoint\n    └── resources/\n        └── application.yml        # config",
+    "explanation": "ใช้ @Controller กำหนด base path และ @Get ผูก method เป็น endpoint โดย Micronaut จัดการ DI ตั้งแต่ compile-time",
+    "notes": [
+      "สร้างโปรเจกต์: mn create-app example.myapp",
+      "รัน: ./gradlew run",
+      "เหมาะกับ microservices, serverless และแอป JVM ที่ต้อง start เร็ว"
+    ]
+  }
+]

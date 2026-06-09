@@ -1,0 +1,77 @@
+[
+  {
+    "id": "nextjs",
+    "languageId": "typescript",
+    "name": "Next.js",
+    "slug": "nextjs",
+    "category": "Full-stack framework",
+    "version": "15+",
+    "url": "https://nextjs.org/",
+    "tagline": "เฟรมเวิร์ก React แบบ full-stack ทำได้ทั้ง frontend และ API",
+    "description": "Next.js (App Router) รวม frontend และ backend ไว้ด้วยกัน รองรับ server components, routing แบบไฟล์ และ route handler สำหรับ API",
+    "code": "// app/api/hello/route.ts\nexport function GET() {\n  return Response.json({ message: \"Hello from Next.js\" });\n}",
+    "structure": "my-app/\n├── package.json\n├── next.config.ts\n├── public/\n└── app/             # routing แบบไฟล์\n    ├── layout.tsx   # โครงร่วมทุกหน้า\n    ├── page.tsx     # หน้า /\n    └── api/\n        └── hello/\n            └── route.ts  # API endpoint",
+    "explanation": "วางไฟล์ route.ts ใต้โฟลเดอร์ app/ แล้ว export ฟังก์ชันตามชื่อ HTTP method (GET/POST) เพื่อสร้าง API endpoint",
+    "notes": [
+      "สร้างโปรเจกต์: npx create-next-app@latest",
+      "รัน dev: npm run dev",
+      "โปรเจกต์ Syntax Atlas นี้ก็สร้างด้วย Next.js"
+    ]
+  },
+  {
+    "id": "nestjs",
+    "languageId": "typescript",
+    "name": "NestJS",
+    "slug": "nestjs",
+    "category": "Backend framework",
+    "version": "11",
+    "url": "https://nestjs.com/",
+    "tagline": "เฟรมเวิร์ก backend แบบมีโครงสร้าง ใช้ decorator และ DI",
+    "description": "NestJS วางโครงสร้างแบบ modular ด้วย controller/provider และ dependency injection สไตล์คล้าย Angular เหมาะกับทีมและโปรเจกต์ใหญ่",
+    "code": "import { Controller, Get } from \"@nestjs/common\";\n\n@Controller()\nexport class AppController {\n  @Get()\n  home(): string {\n    return \"Hello from NestJS\";\n  }\n}",
+    "structure": "my-app/\n├── package.json\n├── nest-cli.json\n└── src/\n    ├── main.ts            # bootstrap แอป\n    ├── app.module.ts      # รวม controller/provider\n    ├── app.controller.ts  # รับ request\n    └── app.service.ts     # logic ทางธุรกิจ",
+    "explanation": "ใช้ decorator @Controller() ครอบคลาส และ @Get() ผูก method เข้ากับ route โดย Nest จัดการ routing และ DI ให้",
+    "notes": [
+      "ติดตั้ง CLI: npm i -g @nestjs/cli",
+      "สร้างโปรเจกต์: nest new project",
+      "รัน: npm run start:dev"
+    ]
+  },
+  {
+    "id": "hono",
+    "languageId": "typescript",
+    "name": "Hono",
+    "slug": "hono",
+    "category": "Edge / API framework",
+    "version": "4",
+    "url": "https://hono.dev/",
+    "tagline": "เฟรมเวิร์กเล็กและเร็ว รันได้ทุกที่ รวมถึง edge runtime",
+    "description": "Hono เป็นเฟรมเวิร์กขนาดเล็กที่รันได้บนหลาย runtime (Node, Bun, Deno, Cloudflare Workers) เน้นความเร็วและ API ที่สะอาด",
+    "code": "import { Hono } from \"hono\";\n\nconst app = new Hono();\n\napp.get(\"/\", (c) => c.text(\"Hello from Hono\"));\n\nexport default app;",
+    "structure": "my-app/\n├── package.json\n├── tsconfig.json\n└── src/\n    ├── index.ts     # สร้าง app และ export\n    └── routes/      # แยก route (ตามต้องการ)\n        └── api.ts",
+    "explanation": "สร้าง instance ของ Hono ผูก route ด้วย app.get() แล้วใช้ context (c) สร้าง response เช่น c.text() หรือ c.json()",
+    "notes": [
+      "สร้างโปรเจกต์: npm create hono@latest",
+      "รันได้หลาย runtime: Node.js, Bun, Deno, Cloudflare Workers"
+    ]
+  },
+  {
+    "id": "elysia",
+    "languageId": "typescript",
+    "name": "Elysia",
+    "slug": "elysia",
+    "category": "API framework",
+    "version": "1.x",
+    "url": "https://elysiajs.com/",
+    "tagline": "เฟรมเวิร์ก TypeScript สำหรับ Bun ที่ type inference ดีมาก",
+    "description": "Elysia เป็นเฟรมเวิร์ก API ที่ออกแบบมาคู่กับ Bun และ TypeScript โดยเน้น type-safety, schema validation และ syntax ที่สั้น",
+    "code": "import { Elysia } from \"elysia\";\n\nconst app = new Elysia()\n  .get(\"/\", () => ({ message: \"Hello from Elysia\" }))\n  .listen(3000);\n\nconsole.log(`Listening on ${app.server?.hostname}:${app.server?.port}`);",
+    "structure": "my-app/\n├── package.json\n├── tsconfig.json\n└── src/\n    ├── index.ts     # สร้าง Elysia app และ listen\n    └── routes/      # แยก route/plugin\n        └── users.ts",
+    "explanation": "สร้าง Elysia app แล้ว chain route ด้วย .get() ก่อนเรียก .listen() โดย TypeScript infer type ของ route และ response ให้",
+    "notes": [
+      "สร้างโปรเจกต์: bun create elysia app",
+      "รัน: bun run src/index.ts",
+      "เหมาะกับงาน API ที่ใช้ Bun เป็น runtime หลัก"
+    ]
+  }
+]

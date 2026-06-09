@@ -17,7 +17,7 @@ export default async function LanguageDetailPage({ params }: { params: Promise<{
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-16">
-      <div className="rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
+      <div className="flex flex-col gap-6 rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <p className="text-sm text-sky-300">{language.version}</p>
@@ -25,6 +25,11 @@ export default async function LanguageDetailPage({ params }: { params: Promise<{
             <p className="mt-4 max-w-2xl text-slate-300">{language.description}</p>
           </div>
           <span className="rounded-2xl bg-slate-800 px-4 py-2 font-mono text-slate-200">{language.fileExtension}</span>
+        </div>
+        <div>
+          <Link href={`/languages/${language.slug}/syntax`} className="inline-flex items-center rounded-full bg-sky-400 px-5 py-3 font-semibold text-slate-950 hover:bg-sky-300">
+            ดู syntax เฉพาะ {language.name} ทั้งหมด →
+          </Link>
         </div>
       </div>
 

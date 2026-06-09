@@ -1,0 +1,96 @@
+[
+  {
+    "id": "django",
+    "languageId": "python",
+    "name": "Django",
+    "slug": "django",
+    "category": "Full-stack framework",
+    "version": "5.x",
+    "url": "https://www.djangoproject.com/",
+    "tagline": "เฟรมเวิร์กครบเครื่อง มาพร้อม ORM, admin และ auth",
+    "description": "Django เป็น batteries-included framework เหมาะกับเว็บขนาดใหญ่ที่ต้องการ ORM, ระบบ admin, และ auth พร้อมใช้ตั้งแต่ต้น",
+    "code": "# views.py\nfrom django.http import HttpResponse\n\ndef home(request):\n    return HttpResponse(\"Hello from Django\")\n\n# urls.py\nfrom django.urls import path\nfrom .views import home\n\nurlpatterns = [\n    path(\"\", home),\n]",
+    "structure": "mysite/\n├── manage.py\n├── mysite/          # ตั้งค่าโปรเจกต์\n│   ├── settings.py\n│   ├── urls.py      # route หลัก\n│   └── wsgi.py\n└── blog/            # หนึ่ง app\n    ├── models.py    # ตาราง/ORM\n    ├── views.py     # logic ตอบ request\n    └── urls.py      # route ของ app",
+    "explanation": "เขียน view เป็นฟังก์ชันที่รับ request แล้วคืน HttpResponse จากนั้น map เข้ากับ URL ใน urlpatterns",
+    "notes": [
+      "ติดตั้ง: pip install django",
+      "สร้างโปรเจกต์: django-admin startproject mysite",
+      "รัน dev server: python manage.py runserver"
+    ]
+  },
+  {
+    "id": "flask",
+    "languageId": "python",
+    "name": "Flask",
+    "slug": "flask",
+    "category": "Micro framework",
+    "version": "3.x",
+    "url": "https://flask.palletsprojects.com/",
+    "tagline": "เฟรมเวิร์กเล็ก ยืดหยุ่น เลือกส่วนประกอบเองได้",
+    "description": "Flask เป็น micro framework ที่ให้แกนเล็ก ๆ แล้วค่อยเสริม extension ตามต้องการ เหมาะกับ API หรือเว็บขนาดเล็กถึงกลาง",
+    "code": "from flask import Flask\n\napp = Flask(__name__)\n\n@app.get(\"/\")\ndef home():\n    return \"Hello from Flask\"",
+    "structure": "myapp/\n├── app.py           # จุดเริ่มและ route\n├── requirements.txt\n├── templates/       # ไฟล์ HTML (Jinja2)\n│   └── index.html\n└── static/          # ไฟล์ static\n    └── style.css",
+    "explanation": "สร้าง instance ของ Flask แล้วผูก route ด้วย decorator @app.get(\"/\") กับฟังก์ชันที่คืนค่าที่จะส่งกลับ",
+    "notes": [
+      "ติดตั้ง: pip install flask",
+      "รัน: flask --app app run --debug"
+    ]
+  },
+  {
+    "id": "fastapi",
+    "languageId": "python",
+    "name": "FastAPI",
+    "slug": "fastapi",
+    "category": "API framework",
+    "version": "0.11x",
+    "url": "https://fastapi.tiangolo.com/",
+    "tagline": "เฟรมเวิร์ก API สมัยใหม่ เร็ว มี type hints และ docs อัตโนมัติ",
+    "description": "FastAPI ใช้ type hints ของ Python ในการ validate ข้อมูลและสร้างเอกสาร OpenAPI ให้อัตโนมัติ เหมาะกับงาน API/async",
+    "code": "from fastapi import FastAPI\n\napp = FastAPI()\n\n@app.get(\"/\")\ndef home():\n    return {\"message\": \"Hello from FastAPI\"}",
+    "structure": "myapi/\n├── main.py          # สร้าง app และ include router\n├── requirements.txt\n├── routers/         # แยก endpoint ตามกลุ่ม\n│   └── items.py\n└── models/          # Pydantic schema\n    └── item.py",
+    "explanation": "ผูก route ด้วย decorator แล้วคืน dict ซึ่ง FastAPI จะแปลงเป็น JSON ให้เอง พร้อมสร้างหน้า docs ที่ /docs",
+    "notes": [
+      "ติดตั้ง: pip install \"fastapi[standard]\"",
+      "รัน: fastapi dev main.py",
+      "เปิดเอกสาร API อัตโนมัติได้ที่ /docs"
+    ]
+  },
+  {
+    "id": "litestar",
+    "languageId": "python",
+    "name": "Litestar",
+    "slug": "litestar",
+    "category": "API framework",
+    "version": "2.x",
+    "url": "https://litestar.dev/",
+    "tagline": "เฟรมเวิร์ก async ที่ type-safe และออกแบบมาสำหรับ API ขนาดจริง",
+    "description": "Litestar เป็นเฟรมเวิร์ก Python แบบ async ที่เน้น type hints, dependency injection, validation และโครงสร้างสำหรับ API ที่เติบโตได้",
+    "code": "from litestar import Litestar, get\n\n@get(\"/\")\nasync def home() -> dict[str, str]:\n    return {\"message\": \"Hello from Litestar\"}\n\napp = Litestar(route_handlers=[home])",
+    "structure": "myapi/\n├── app.py           # สร้าง Litestar app\n├── requirements.txt\n├── controllers/     # route/controller แยกตาม feature\n│   └── users.py\n└── schemas/         # DTO/schema\n    └── user.py",
+    "explanation": "ประกาศ handler ด้วย @get แล้วส่งเข้า route_handlers ตอนสร้าง Litestar app โดยคืน dict เพื่อให้ framework serialize เป็น JSON",
+    "notes": [
+      "ติดตั้ง: pip install litestar",
+      "รัน: litestar run --reload",
+      "เหมาะกับ API ที่ต้องการ async, type hints และโครงสร้างชัดเจน"
+    ]
+  },
+  {
+    "id": "pyramid",
+    "languageId": "python",
+    "name": "Pyramid",
+    "slug": "pyramid",
+    "category": "Web framework",
+    "version": "2.x",
+    "url": "https://trypyramid.com/",
+    "tagline": "เฟรมเวิร์กยืดหยุ่น เริ่มเล็กได้และขยายเป็นแอปใหญ่ได้",
+    "description": "Pyramid เป็นเฟรมเวิร์ก Python ที่ให้แกนกลางยืดหยุ่น เลือก template, ORM และส่วนประกอบอื่นได้เอง เหมาะกับทีมที่อยากควบคุมโครงสร้าง",
+    "code": "from pyramid.config import Configurator\nfrom pyramid.response import Response\n\n\ndef home(request):\n    return Response(\"Hello from Pyramid\")\n\nwith Configurator() as config:\n    config.add_route(\"home\", \"/\")\n    config.add_view(home, route_name=\"home\")\n    app = config.make_wsgi_app()",
+    "structure": "myapp/\n├── pyproject.toml\n├── development.ini  # config สำหรับ dev server\n└── myapp/\n    ├── __init__.py  # config route/view\n    ├── views.py     # view functions\n    └── models.py    # ORM/model ตามที่เลือกใช้",
+    "explanation": "สร้าง Configurator แล้วเพิ่ม route และ view แยกกัน จากนั้นสร้าง WSGI app ด้วย make_wsgi_app()",
+    "notes": [
+      "ติดตั้ง: pip install pyramid",
+      "แนวคิด route/view แยกชัดกว่า Flask",
+      "เหมาะกับโปรเจกต์ที่ต้องการเลือก stack เอง"
+    ]
+  }
+]

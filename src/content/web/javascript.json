@@ -1,0 +1,76 @@
+[
+  {
+    "id": "express",
+    "languageId": "javascript",
+    "name": "Express",
+    "slug": "express",
+    "category": "Web framework",
+    "version": "5.x",
+    "url": "https://expressjs.com/",
+    "tagline": "เฟรมเวิร์ก Node.js ยอดนิยม เรียบง่ายและมี middleware เยอะ",
+    "description": "Express เป็นเฟรมเวิร์ก backend ของ Node.js ที่ได้รับความนิยมสูงสุด เน้น routing และ middleware ที่ยืดหยุ่น",
+    "code": "const express = require(\"express\");\nconst app = express();\n\napp.get(\"/\", (req, res) => {\n  res.send(\"Hello from Express\");\n});\n\napp.listen(3000);",
+    "structure": "myapp/\n├── package.json\n├── index.js         # จุดเริ่มและ app.listen\n├── routes/          # แยก route ตามกลุ่ม\n│   └── users.js\n└── public/          # ไฟล์ static\n    └── style.css",
+    "explanation": "สร้าง app จาก express() ผูก route ด้วย app.get() แล้วเปิดรับ request ด้วย app.listen()",
+    "notes": [
+      "ติดตั้ง: npm install express",
+      "รัน: node index.js"
+    ]
+  },
+  {
+    "id": "fastify",
+    "languageId": "javascript",
+    "name": "Fastify",
+    "slug": "fastify",
+    "category": "API framework",
+    "version": "5.x",
+    "url": "https://fastify.dev/",
+    "tagline": "เฟรมเวิร์กที่เน้นความเร็วและ schema validation",
+    "description": "Fastify เน้น performance สูงและ validation ด้วย JSON Schema เหมาะกับ API ที่ต้องการ throughput สูง",
+    "code": "const Fastify = require(\"fastify\");\nconst app = Fastify();\n\napp.get(\"/\", async () => {\n  return { message: \"Hello from Fastify\" };\n});\n\napp.listen({ port: 3000 });",
+    "structure": "myapp/\n├── package.json\n├── app.js           # สร้าง instance และ listen\n├── routes/          # route แยกเป็น plugin\n│   └── root.js\n└── plugins/         # plugin เช่น db, auth\n    └── db.js",
+    "explanation": "handler คืน object ได้เลย Fastify จะ serialize เป็น JSON ให้ พร้อมรองรับ async/await โดยตรง",
+    "notes": [
+      "ติดตั้ง: npm install fastify",
+      "รัน: node app.js"
+    ]
+  },
+  {
+    "id": "koa",
+    "languageId": "javascript",
+    "name": "Koa",
+    "slug": "koa",
+    "category": "Web framework",
+    "version": "2.x",
+    "url": "https://koajs.com/",
+    "tagline": "เฟรมเวิร์กจากทีม Express ที่เน้น middleware แบบ async",
+    "description": "Koa เป็นเฟรมเวิร์ก Node.js ที่แกนเล็กมากและใช้ async middleware เป็นหลัก เหมาะกับ API ที่อยากประกอบ behavior เอง",
+    "code": "const Koa = require(\"koa\");\nconst app = new Koa();\n\napp.use(async (ctx) => {\n  ctx.body = \"Hello from Koa\";\n});\n\napp.listen(3000);",
+    "structure": "myapp/\n├── package.json\n├── index.js         # สร้าง Koa app และ listen\n├── middleware/      # logger, auth, error handler\n│   └── auth.js\n└── routes/          # route ด้วย @koa/router\n    └── users.js",
+    "explanation": "Koa ใช้ context (ctx) สำหรับ request/response และเรียง middleware แบบ async เพื่อประกอบ logic ของ request",
+    "notes": [
+      "ติดตั้ง: npm install koa",
+      "ถ้าต้องการ routing แยก ติดตั้ง @koa/router เพิ่ม",
+      "รัน: node index.js"
+    ]
+  },
+  {
+    "id": "adonisjs",
+    "languageId": "javascript",
+    "name": "AdonisJS",
+    "slug": "adonisjs",
+    "category": "Full-stack framework",
+    "version": "6",
+    "url": "https://adonisjs.com/",
+    "tagline": "เฟรมเวิร์ก Node.js แบบ batteries-included สไตล์ MVC",
+    "description": "AdonisJS ให้โครงสร้าง full-stack สำหรับ Node.js พร้อม routing, controller, validation, ORM และ auth เหมาะกับแอปที่ต้องการ conventions ชัดเจน",
+    "code": "import router from \"@adonisjs/core/services/router\";\n\nrouter.get(\"/\", async () => {\n  return { message: \"Hello from AdonisJS\" };\n});",
+    "structure": "myapp/\n├── package.json\n├── start/           # route และ bootstrap\n│   └── routes.js\n└── app/\n    ├── controllers/ # controller ของแต่ละ feature\n    └── models/      # Lucid ORM models",
+    "explanation": "กำหนด route ผ่าน router service แล้วคืน object เพื่อส่ง JSON response โดยโครงสร้างโปรเจกต์ช่วยแยก controller/model ตั้งแต่ต้น",
+    "notes": [
+      "สร้างโปรเจกต์: npm init adonisjs@latest",
+      "รัน dev: npm run dev",
+      "เหมาะกับทีมที่อยากได้ MVC และเครื่องมือครบใน Node.js"
+    ]
+  }
+]

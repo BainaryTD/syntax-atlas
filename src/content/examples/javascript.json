@@ -108,5 +108,140 @@
       "catch จะรับ error object ที่เกิดขึ้น"
     ],
     "version": "ES2024"
+  },
+  {
+    "id": "javascript-string-format-basic",
+    "languageId": "javascript",
+    "topicId": "string-format",
+    "code": "const name = \"Bainary\";\nconsole.log(`Hello, ${name}!`);",
+    "explanation": "แทรกค่าตัวแปรด้วย template literal",
+    "notes": [
+      "template literal ใช้ backtick ` และ ${} แทรกค่า"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-ternary-basic",
+    "languageId": "javascript",
+    "topicId": "ternary",
+    "code": "const age = 20;\nconst label = age >= 18 ? \"adult\" : \"minor\";\nconsole.log(label);",
+    "explanation": "เขียนเงื่อนไขแบบย่อด้วย ternary operator",
+    "notes": [
+      "รูปแบบคือ เงื่อนไข ? ค่าถ้าจริง : ค่าถ้าเท็จ"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-switch-case-basic",
+    "languageId": "javascript",
+    "topicId": "switch-case",
+    "code": "const status = \"active\";\n\nswitch (status) {\n  case \"active\":\n    console.log(\"running\");\n    break;\n  case \"paused\":\n    console.log(\"on hold\");\n    break;\n  default:\n    console.log(\"unknown\");\n}",
+    "explanation": "เลือกทำงานตามค่าด้วย switch",
+    "notes": [
+      "อย่าลืม break ไม่งั้นจะ fall through ไป case ถัดไป"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-lambda-basic",
+    "languageId": "javascript",
+    "topicId": "lambda",
+    "code": "const square = (x) => x * x;\nconsole.log(square(5));",
+    "explanation": "สร้างฟังก์ชันนิรนามด้วย arrow function",
+    "notes": [
+      "arrow function สั้นและไม่ผูก this ของตัวเอง"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-map-filter-basic",
+    "languageId": "javascript",
+    "topicId": "map-filter",
+    "code": "const numbers = [1, 2, 3, 4];\nconst evens = numbers.filter((n) => n % 2 === 0);\nconst doubled = numbers.map((n) => n * 2);\nconsole.log(evens, doubled);",
+    "explanation": "ใช้ filter กรองและ map แปลงค่าใน array",
+    "notes": [
+      "filter/map คืน array ใหม่ ไม่แก้ของเดิม"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-class-basic",
+    "languageId": "javascript",
+    "topicId": "class",
+    "code": "class User {\n  constructor(name) {\n    this.name = name;\n  }\n\n  greet() {\n    return `Hi, ${this.name}`;\n  }\n}\n\nconst user = new User(\"Bainary\");\nconsole.log(user.greet());",
+    "explanation": "สร้าง class พร้อม constructor และ method",
+    "notes": [
+      "ใช้ new เพื่อสร้าง instance",
+      "this อ้างถึง object ปัจจุบัน"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-enum-basic",
+    "languageId": "javascript",
+    "topicId": "enum",
+    "code": "const Color = Object.freeze({\n  RED: \"red\",\n  GREEN: \"green\",\n});\n\nconsole.log(Color.RED);",
+    "explanation": "JavaScript ไม่มี enum จึงใช้ object ที่ freeze ไว้แทน",
+    "notes": [
+      "Object.freeze ป้องกันการแก้ค่า ทำให้ใช้งานเหมือน enum"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-destructuring-basic",
+    "languageId": "javascript",
+    "topicId": "destructuring",
+    "code": "const user = { name: \"Bainary\", age: 20 };\nconst { name, age } = user;\nconst [first, second] = [1, 2];\nconsole.log(name, age, first, second);",
+    "explanation": "แยกค่าจาก object และ array ด้วย destructuring",
+    "notes": [
+      "ตั้งชื่อตัวแปรใหม่ได้ด้วย { name: userName }"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-interface-trait-basic",
+    "languageId": "javascript",
+    "topicId": "interface-trait",
+    "code": "function welcome(greeter) {\n  console.log(greeter.greet());\n}\n\nconst user = {\n  greet() {\n    return \"Hi\";\n  },\n};\n\nwelcome(user);",
+    "explanation": "JavaScript ไม่มี interface จึงใช้ duck typing แทน",
+    "notes": [
+      "ถ้า object มี method ที่ถูกเรียก ก็ใช้งานได้ทันที"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-generics-basic",
+    "languageId": "javascript",
+    "topicId": "generics",
+    "code": "function first(items) {\n  return items[0];\n}\n\nconsole.log(first([1, 2, 3]));",
+    "explanation": "JavaScript ไม่มี generics เพราะเป็น dynamic typing",
+    "notes": [
+      "ฟังก์ชันรับค่าได้ทุก type อยู่แล้ว ไม่ต้องระบุ type parameter"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-null-optional-basic",
+    "languageId": "javascript",
+    "topicId": "null-optional",
+    "code": "const user = null;\nconst name = user?.name ?? \"guest\";\nconsole.log(name);",
+    "explanation": "ใช้ optional chaining และ nullish coalescing",
+    "notes": [
+      "?. หยุดอ่านถ้าเป็น null/undefined",
+      "?? ใช้ค่า default เฉพาะเมื่อเป็น null/undefined"
+    ],
+    "version": "ES2024"
+  },
+  {
+    "id": "javascript-async-concurrency-basic",
+    "languageId": "javascript",
+    "topicId": "async-concurrency",
+    "code": "async function main() {\n  await new Promise((resolve) => setTimeout(resolve, 1000));\n  console.log(\"done\");\n}\n\nmain();",
+    "explanation": "ใช้ async/await รอ Promise โดยไม่บล็อก",
+    "notes": [
+      "await ใช้ได้เฉพาะใน async function",
+      "JavaScript รันแบบ single-thread บน event loop"
+    ],
+    "version": "ES2024"
   }
 ]
